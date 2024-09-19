@@ -1,5 +1,3 @@
-let playerScore = 0;
-let computerScore = 0;
 
 function getComputerChoice(){
     let random = Math.floor(Math.random() * 3) + 1;
@@ -20,7 +18,10 @@ function getPlayerChoice(){
     return playerMove;
 };
 
-function playRound(playerMove, computerMove){
+function playRound(){
+    const playerMove = getPlayerChoice();
+    const computerMove = getComputerChoice();
+    
     console.log(`Player move: ${playerMove}`);
     console.log(`Computer move: ${computerMove}`);
     
@@ -35,17 +36,21 @@ function playRound(playerMove, computerMove){
         console.log("You win!");
         playerScore++;
         console.log(`Your Score: ${playerScore}   Computer Score: ${computerScore}`);
+        return "player";
     } else{
         console.log("You lose!");
         computerScore++;
         console.log(`Your Score: ${playerScore}   Computer Score: ${computerScore}`);
+        return "computer";
     }
 };
 
-const playerMove = getPlayerChoice();
-const computerMove = getComputerChoice();
+function playGame(){
+    let playerScore = 0;
+    let computerScore = 0;
 
-playRound(playerMove, computerMove);
+}
+
 
 
 
