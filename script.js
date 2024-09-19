@@ -4,52 +4,48 @@ let computerScore = 0;
 function getComputerChoice(){
     let random = Math.floor(Math.random() * 3) + 1;
     if (random === 1){
-        return "Rock";
+        return "rock";
     } else if (random === 2){
-        return "Paper";
+        return "paper";
     } else{
-        return "Scissors";
+        return "scissors";
     };
 };
+
 function getPlayerChoice(){
-    let playerMove = prompt("What your move?")
-    return playerMove
+    let playerMove = prompt("What your move: (Rock, Paper, Scissors)?").toLowerCase();
+    while(playerMove !== "rock" && playerMove !== "paper" && playerMove !== "scissors"){
+        playerMove = ("Invalid input. Please enter a valid move: (Rock, Paper, Scissors)").toLowerCase();
+    }
+    return playerMove;
 };
+
 function playRound(playerMove, computerMove){
-    console.log(`Player move: ` + playerMove);
-    console.log(`Computer move: ` + computerMove);
-    if(playerMove === "Rock"){
-        if (computerMove === "Rock"){
-            console.log("DRAW!");
-        } else if (computerMove === "Paper"){
-            console.log("YOU LOSE! Paper beats Rock.");
-        } else {
-            console.log("YOU WIN! Rock beats Scissors.");
-        }
-    };
-    if(playerMove === "Paper"){
-        if (computerMove === "Rock"){
-            console.log("YOU WIN! Paper beats Rock.");
-        } else if (computerMove === "Paper"){
-            console.log("DRAW!");
-        } else {
-            console.log("YOU LOSE! Scissors beats Paper.");
-        }
-    };
-    if(playerMove === "Scissors"){
-        if (computerMove === "Rock"){
-            console.log("YOU LOSE! Rock beats Scissors.");
-        } else if (computerMove === "Paper"){
-            console.log("YOU WIN! Scissors beats Paper.");
-        } else {
-            console.log("DRAW!");
-        }
-    };
+    console.log(`Player move: ${playerMove}`);
+    console.log(`Computer move: ${computerMove}`);
+    
+    if(playerMove === computerMove){
+        console.log("Tie!");
+        console.log(`Your Score: ${playerScore}   Computer Score: ${computerScore}`);
+    } else if (
+        playerMove === "rock" && computerMove === "scissors" ||
+        playerMove === "paper" && computerMove === "rock" ||
+        playerMove === "scissors" && computerMove === "paper"
+    ) {
+        console.log("You win!");
+        playerScore++;
+        console.log(`Your Score: ${playerScore}   Computer Score: ${computerScore}`);
+    } else{
+        console.log("You lose!");
+        computerScore++;
+        console.log(`Your Score: ${playerScore}   Computer Score: ${computerScore}`);
+    }
 };
 
 const playerMove = getPlayerChoice();
 const computerMove = getComputerChoice();
 
 playRound(playerMove, computerMove);
+
 
 
