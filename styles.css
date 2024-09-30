@@ -51,3 +51,14 @@ body{
 #scissors-btn:hover{
     cursor: pointer;
 }
+#result{
+    font-weight: 900;
+    text-align: center;
+    font-size: 2em;
+}
+#restart{
+    background-color: black;
+    border: 2px white solid;
+    font-size: 56px;
+    width: 638px;
+}
