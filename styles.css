@@ -49,6 +49,13 @@ body{
 #scissors-btn:hover{
     cursor: pointer;
 }
+#paper-btn:active,
+#rock-btn:active,
+#scissors-btn:active{
+    cursor: grab;
+    color: gray;
+    animation-play-state: all 1s;
+}
 #result{
     font-weight: 900;
     text-align: center;

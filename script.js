@@ -2,7 +2,12 @@ const rockButton = document.getElementById('rock-btn');
 const paperButton = document.getElementById('paper-btn');
 const scissorsButton = document.getElementById('scissors-btn');
 const roundResult = document.getElementById('result');
-const score = document.getElementById('score');
+const displayScore = document.getElementById('score');
+const restart = document.getElementById('restart')
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
 
 function getComputerChoice(){
     const moves = ['ROCK', 'PAPER', 'SCISSORS'];
@@ -23,7 +28,6 @@ function winner(playerMove, computerMove){
     }
 }
 function playRound(move){
-    
     const computerMove = getComputerChoice();
     const result  = winner(move, computerMove);
 
@@ -31,10 +35,33 @@ function playRound(move){
     <p> PLAYER SELECTED: ${move}</p>
     <p> COMPUTER SELECTED: ${computerMove}</p>
     <p> ${result} </p>
-    `
+    `;
+    if(result === "YOU WIN!"){
+        playerScore++;
+    } else if(result === "YOU LOSE!"){
+        computerScore++;
+    }
+    displayScore.innerHTML = `
+        <p>Round: ${round}</p>
+        <p>Player Score: ${playerScore}</p>
+        <p>Computer Score: ${computerScore}</p>
+    `;
+    if(round === 5){
+        if(playerScore > computerScore){
+            displayScore.innerHTML = `<br><p>Congratulations! Player Wins!</p>`
+        } else if(playerScore < computerScore){
+            displayScore.innerHTML = `<br><p>Sorry. You lose. Computer Wins.</p>`
+        } else{
+            displayScore.innerHTML = `<br><p>It's a Tie!</p>`
+        }
+        playerScore = 0;
+        computerScore = 0;
+        round = 1;
+    } else {
+        round++;
+    }
 };
 
 rockButton.addEventListener('click', () => playRound('ROCK'));
 paperButton.addEventListener('click', () => playRound('PAPER'));
 scissorsButton.addEventListener('click', () => playRound('SCISSORS'));
-
