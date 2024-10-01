@@ -48,9 +48,9 @@ function playRound(move){
     `;
     if(round === 5){
         if(playerScore > computerScore){
-            displayScore.innerHTML = `<br><p>Congratulations! Player Wins!</p>`
+            displayScore.innerHTML = `<br><p class="youwin">Congratulations! Player Wins!</p>`
         } else if(playerScore < computerScore){
-            displayScore.innerHTML = `<br><p>Sorry. You lose. Computer Wins.</p>`
+            displayScore.innerHTML = `<br><p class="youlose">Sorry. You lose. Computer Wins.</p>`
         } else{
             displayScore.innerHTML = `<br><p>It's a Tie!</p>`
         }

@@ -73,4 +73,19 @@ body{
     text-align: center;
     font-size: 2em;
     line-height: 32px;
+    color: white;
+}
+.youlose{
+    font-weight: 900;
+    text-align: center;
+    font-size: 2em;
+    line-height: 32px;
+    color: red;
+}
+.youwin{
+    font-weight: 900;
+    text-align: center;
+    font-size: 2em;
+    line-height: 32px;
+    color: greenyellow;
 }
